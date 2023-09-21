@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(../Images&Icons/greenLemons.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1.6;
+    margin-left: 40px;
+    margin-top: 70px;
+}
+
+.about-images {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about-images img {
+    max-width: 300px;
+    border-radius: 10%;
+    margin: 10px;
+}
+
+.main-footer {
+    margin-top: 175px;
+    background-color:rgba(80, 119, 23, 0.4);
+    color: white;
+    padding: .25em 0;
+}
+.social-media {
+   display: flex;
+   justify-content: center;
+}
+.social-media a{
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    background-color: #385712;
+    margin: 18px;
+    border-radius: 5px;
+}
+
+.social-media a i {
+    font-size: 2em;
+    color:#eee;
+    opacity: 8.9;
+}
+
+.social-media a:hover {
+    background-color:rgba(80, 119, 23, 0.4);
+}
+.footerBottom {
+text-align: center;
+}
+

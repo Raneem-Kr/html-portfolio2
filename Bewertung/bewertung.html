@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewertung</title>
+    <link rel="stylesheet" href="bewertung.css">
+
+</head>
+<body>
+    <div id="bewertungen-container">
+        <div class="bewertung">
+            <h4>Nutzername 1</h4>
+            <p>Datum: 01.01.2023</p>
+            <p>Anzahl der Sterne: 4</p>
+            <p>Kommentar: Wooooooooow habe ich die für meine Schwester gekauft und sie ist sehr zufrieden.</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+        <div class="bewertung">
+            <h4>Nutzername 2</h4>
+            <p>Datum: 05.02.2023</p>
+            <p>Anzahl der Sterne: 3</p>
+            <p>Kommentar: Qualität ist gut aber es gab ein Problem bei der Lieferung.</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+        <div class="bewertung">
+            <h4>Nutzername 3</h4>
+            <p>Datum: 10.03.2023</p>
+            <p>Anzahl der Sterne: 5</p>
+            <p>Kommentar: Super Produkt würde ich weiterempfehlen.</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+        <div class="bewertung">
+            <h4>Nutzername 4</h4>
+            <p>Datum: 15.04.2023</p>
+            <p>Anzahl der Sterne: 2</p>
+            <p>Kommentar: Great</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+        <div class="bewertung">
+            <h4>Nutzername 5</h4>
+            <p>Datum: 20.05.2023</p>
+            <p>Anzahl der Sterne: 4</p>
+            <p>Kommentar: Gute Qualität.</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+        <div class="bewertung">
+            <h4>Nutzername 6</h4>
+            <p>Datum: 01.03.2023</p>
+            <p>Anzahl der Sterne: 5</p>
+            <p>Kommentar: Für den Preis, Perfect!.</p>
+            <span class="sterne">★★★☆☆</span>
+        </div>
+              <div class="bewertung">
+                <h4>Nutzername 7</h4>
+                <p>Datum: 05.02.2023</p>
+                <p>Anzahl der Sterne: 3</p>
+                <p>Kommentar: Naja!</p>
+                  <span class="sterne">★★★☆☆</span>
+        </div>
+              <div class="bewertung">
+                <h4>Nutzername 8</h4>
+                <p>Datum: 10.03.2023</p>
+                <p>Anzahl der Sterne: 5</p>
+                <p>Kommentar: Würde es definitive weiter empfehlen..</p>
+                  <span class="sterne">★★★☆☆</span>
+        </div>
+              <br>
+      </div>
+     
+    <button onclick="sortByDatum()">Nach Datum sortieren</button>
+    <button onclick="sortBySterne()">Nach Sterne sortieren</button>
+
+    <div id="durchschnitt-container">
+      <h4>Durchschnittliche Bewertung</h4>
+      <div id="sterne-durchschnitt">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+      </div>
+      <p id="durchschnitt-bewertung"></p>
+    </div>
+    </div>
+<script>
+  // Bewertungen-Daten-Array
+const bewertungenData = [
+    {
+        nutzername: 'Nutzername 1',
+        datum: '01.01.2023',
+        sterne: 4,
+        kommentar: ' Wooooooooow habe ich die für meine Schwester gekauft und sie ist sehr zufrieden.  '
+    },
+    {
+        nutzername: 'Nutzername 2',
+        datum: '05.02.2023',
+        sterne: 3,
+        kommentar: ' Qualität ist gut aber es gab ein Problem bei der Lieferung. '
+    },
+    {
+        nutzername: 'Nutzername 3',
+        datum: '10.03.2023',
+        sterne: 5,
+        kommentar: ' Super Produkt würde ich weiterempfehlen. '
+    },
+    {
+        nutzername: 'Nutzername 4',
+        datum: '15.04.2023',
+        sterne: 2,
+        kommentar: ' Great '
+    },
+    {
+        nutzername: 'Nutzername 5',
+        datum: '20.05.2023',
+        sterne: 4,
+        kommentar: ' Gute Qualität. '
+    },
+    {
+        nutzername: 'Nutzername 6',
+        datum: '01.03.2023',
+        sterne: 5,
+        kommentar: 'Für den Preis, Perfect!. '
+    },
+    {
+        nutzername: 'Nutzername 7',
+        datum: '05.02.2023',
+        sterne: 3,
+        kommentar: ' Naja! '
+    },
+    {
+        nutzername: 'Nutzername 8',
+        datum: '10.03.2023',
+        sterne: 5,
+        kommentar: 'Würde es definitive weiter empfehlen.. '
+    }
+];
+// Funktion zum Erstellen einer einzelnen Bewertung
+function createBewertungElement(bewertung) {
+  const bewertungElement = document.createElement('div');
+  bewertungElement.classList.add('bewertung');
+
+  const nutzernameElement = document.createElement('h4');
+  nutzernameElement.textContent = bewertung.nutzername;
+
+  const datumElement = document.createElement('p');
+  datumElement.textContent = 'Datum: ' + bewertung.datum;
+
+  const sterneElement = document.createElement('p');
+  sterneElement.textContent = 'Anzahl der Sterne: ' + bewertung.sterne;
+
+  const kommentarElement = document.createElement('p');
+  kommentarElement.textContent = 'Kommentar: ' + bewertung.kommentar;
+
+  const sterneRatingElement = document.createElement('div');
+  sterneRatingElement.classList.add('sterne');
+  for (let i = 0; i < 5; i++) {
+    const starElement = document.createElement('span');
+    starElement.classList.add('star');
+    if (i < bewertung.sterne) {
+      starElement.classList.add('active');
+    }
+    sterneRatingElement.appendChild(starElement);
+  }
+
+  bewertungElement.appendChild(nutzernameElement);
+  bewertungElement.appendChild(datumElement);
+  bewertungElement.appendChild(sterneElement);
+  bewertungElement.appendChild(kommentarElement);
+  bewertungElement.appendChild(sterneRatingElement);
+
+  return bewertungElement;
+}
+
+
+// Funktion zum Anzeigen der Bewertungen
+function showBewertungen() {
+    const bewertungenContainer = document.getElementById('bewertungen-container');
+    bewertungenContainer.innerHTML = '';
+
+    bewertungenData.forEach(function (bewertung) {
+        const bewertungElement = createBewertungElement(bewertung);
+        bewertungenContainer.appendChild(bewertungElement);
+    });
+}
+// Funktion zum Sortieren der Bewertungen nach Datum
+function sortByDatum() {
+    bewertungenData.sort(function (a, b) {
+        const datumA = new Date(a.datum);
+        const datumB = new Date(b.datum);
+        return datumA - datumB;
+    });
+
+    showBewertungen();
+}
+
+// Funktion zum Sortieren der Bewertungen nach sternen
+function sortBySterne() {
+  const bewertungenContainer = document.getElementById('bewertungen-container');
+  const bewertungen = Array.from(bewertungenContainer.getElementsByClassName('bewertung'));
+
+  bewertungen.sort(function(a, b) {
+    const sterneA = parseInt(a.querySelector('p:nth-child(3)').textContent.split(':')[1].trim());
+    const sterneB = parseInt(b.querySelector('p:nth-child(3)').textContent.split(':')[1].trim());
+
+    return sterneB - sterneA;
+  });
+
+  bewertungen.forEach(function(bewertung) {
+    bewertungenContainer.appendChild(bewertung);
+  });
+}
+
+// Bewertungen auswerten und Durchschnitt berechnen
+function berechneDurchschnitt() {
+  var summe = 0;
+
+  for (var i = 0; i < bewertungenData.length; i++) {
+    var bewertung = bewertungenData[i].sterne;
+    summe += bewertung;
+  }
+
+  var durchschnitt = summe / bewertungenData.length;
+
+  return durchschnitt.toFixed(1);
+}
+
+// Durchschnitt anzeigen
+function zeigeDurchschnitt() {
+  var durchschnitt = berechneDurchschnitt();
+  var durchschnittElement = document.getElementById('durchschnitt-bewertung');
+
+  if (!isNaN(durchschnitt)) {
+    durchschnittElement.textContent = 'Durchschnitt: ' + durchschnitt + ' Sterne';
+  }
+}
+
+// Durchschnitt beim Laden der Seite anzeigen
+window.addEventListener('DOMContentLoaded', zeigeDurchschnitt);
+
+
+</script>
+</body>
+</html>
